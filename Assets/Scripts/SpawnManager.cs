@@ -8,6 +8,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject _enemyPrefab;
     [SerializeField]
     private GameObject _enemyContainer;
+    [SerializeField]
+    private float enemySpawnSpeed = 5f;
 
     private bool _stopSpawning = false;
     void Start()
@@ -26,7 +28,7 @@ public class SpawnManager : MonoBehaviour
         {
             GameObject newEnemy = Instantiate(_enemyPrefab, transform.position + new Vector3(Random.Range(-10f, 10f), 0, 0), Quaternion.identity);
             newEnemy.transform.parent = _enemyContainer.transform;
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(enemySpawnSpeed);
         }
     }
 
