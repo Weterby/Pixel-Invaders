@@ -1,0 +1,49 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class EnemyBehaviour : MonoBehaviour
+{
+    [SerializeField]
+    private float _speed = 4f;
+    private float _bottomBound = -6f;
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        CalculatePath();
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            Destroy(gameObject);
+
+            //get Player script component so we can change health value
+            Player player = other.gameObject.GetComponent<Player>();
+            if (player != null)
+            {
+                player.ReceiveDamage();
+            }
+        }
+        if (other.tag == "Projectile")
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
+    }
+
+    void CalculatePath()
+    {
+        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        if (transform.position.y <= _bottomBound)
+        {
+            transform.position = new Vector3(Random.Range(-10f, 10f), 8f, 0);
+        }
+    }
+}
