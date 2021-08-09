@@ -18,7 +18,7 @@ public class EnemyBehaviour : MonoBehaviour
         CalculatePath();
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")
         {
@@ -40,10 +40,10 @@ public class EnemyBehaviour : MonoBehaviour
 
     void CalculatePath()
     {
-        transform.Translate(Vector3.down * _speed * Time.deltaTime);
+        transform.Translate(Vector2.down * _speed * Time.deltaTime);
         if (transform.position.y <= _bottomBound)
         {
-            transform.position = new Vector3(Random.Range(-10f, 10f), 8f, 0);
+            transform.position = new Vector2(Random.Range(-10f, 10f), 8f);
         }
     }
 }

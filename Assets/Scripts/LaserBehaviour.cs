@@ -21,7 +21,7 @@ public class LaserBehaviour : MonoBehaviour
 
     void CalculatePath()
     {
-        transform.Translate(new Vector3(0, _speed * Time.deltaTime, 0));
+        transform.Translate(new Vector2(0, _speed * Time.deltaTime));
         if (transform.position.y >= _upperBound)
         {
             Destroy(this.gameObject);

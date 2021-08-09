@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _fireRate = 0.5f;
     private float _nextFire = 0.0f;
-    private Vector3 laserOffsetY = new Vector3(0, 0.8f, 0);
+    private Vector3 laserOffsetY = new Vector3(0, 0.8f,0);
     private SpawnManager _spawnManager;
     void Start()
     {
@@ -28,14 +28,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CalculateMovement();
-
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
         {
             SpawnLaser();
         }
     }
-
+    private void FixedUpdate()
+    {
+        CalculateMovement();
+    }
     void CalculateMovement()
     {
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -43,7 +44,7 @@ public class Player : MonoBehaviour
 
         // transform.Translate(Vector3.right * horizontalInput * _speed * Time.deltaTime);
         // transform.Translate(Vector3.up * verticalInput * _speed * Time.deltaTime);
-        transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.deltaTime);
+        transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.fixedDeltaTime);
 
         if (transform.position.y >= 0)
         {
