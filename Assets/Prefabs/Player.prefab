@@ -124,5 +124,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 3
   _speed: 5
-  _laserPrefab: {fileID: 2129845740010998662, guid: 72beea912f5ef4b4b974ad942bdf0e7f, type: 3}
+  _laserPrefab: {fileID: 1891431954584277610, guid: 78807db37cc389f49b9f8550a0388bb5, type: 3}
   _fireRate: 0.5

@@ -17,11 +17,6 @@ public class SpawnManager : MonoBehaviour
         StartCoroutine("SpawnEnemies");
     }
 
-    void Update()
-    {
-       
-    }
-
     IEnumerator SpawnEnemies()
     {
         while (!_stopSpawning)
