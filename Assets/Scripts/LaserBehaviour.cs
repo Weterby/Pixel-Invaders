@@ -5,15 +5,9 @@ using UnityEngine;
 public class LaserBehaviour : MonoBehaviour
 {
     [SerializeField]
-    private float _speed = 10;
+    private Weapon weapon;
     private int _upperBound = 9;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    
     void Update()
     {
         CalculatePath();
@@ -21,10 +15,21 @@ public class LaserBehaviour : MonoBehaviour
 
     void CalculatePath()
     {
-        transform.Translate(new Vector2(0, _speed * Time.deltaTime));
+        //Debug.Log("XXX"+weapon.LaserVelocity);
+        transform.Translate(new Vector2(0, weapon.LaserVelocity * Time.deltaTime));
         if (transform.position.y >= _upperBound)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            //deal damage
+            Destroy(gameObject);
+            Destroy(collision.gameObject);
         }
     }
 }

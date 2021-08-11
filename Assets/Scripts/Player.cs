@@ -9,11 +9,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _speed = 5;
     [SerializeField]
-    private GameObject _laserPrefab;
-    [SerializeField]
-    private float _fireRate = 0.5f;
+    private float _fireRate = 1f;
     private float _nextFire = 0.0f;
-    private Vector3 laserOffsetY = new Vector3(0, 0.8f,0);
+
+    private Weapon weapon;
     private SpawnManager _spawnManager;
     void Start()
     {
@@ -21,7 +20,13 @@ public class Player : MonoBehaviour
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
         {
-            Debug.LogError("SPAWN MANAGER IS NULL");
+            Debug.LogError("SPAWN MANAGER IS MISSING");
+        }
+
+        weapon = gameObject.GetComponent<Weapon>();
+        if(weapon == null)
+        {
+            Debug.LogError("WEAPON SCRIPT COMPONENT IS MISSING");
         }
     }
 
@@ -64,7 +69,7 @@ public class Player : MonoBehaviour
     void SpawnLaser()
     {
         _nextFire = Time.time + _fireRate;
-        Instantiate(_laserPrefab,transform.position+laserOffsetY, Quaternion.identity);
+        weapon.Shoot();
     }
 
     public void ReceiveDamage() 
@@ -77,5 +82,14 @@ public class Player : MonoBehaviour
         }
     }
 
-
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //on collision with weapon box - upgrade weapon
+        if (collision.gameObject.tag == "Upgrade")
+        {
+            int itemID = collision.gameObject.GetComponent<WeaponUpgrade>().ItemID;
+            weapon.ChangeWeapon(itemID);
+            Destroy(collision.gameObject);
+        }
+    }
 }

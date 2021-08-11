@@ -123,6 +123,28 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &132604674 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -614506444586348126, guid: bd1a546d94652954fb0df20971b3e3a1, type: 3}
+  m_PrefabInstance: {fileID: 4832262590465224922}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17ef11be8563cfa48875c23b97a0a88d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &684565388 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7787427404446144058, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+  m_PrefabInstance: {fileID: 7787427403787810230}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fcd7685809f562498b6ea8219aa050d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +418,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -614506444586348126, guid: bd1a546d94652954fb0df20971b3e3a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 132604675, guid: bd1a546d94652954fb0df20971b3e3a1, type: 3}
+      propertyPath: defaultWeapon
+      value: 
+      objectReference: {fileID: 2129845740010998662, guid: 72beea912f5ef4b4b974ad942bdf0e7f, type: 3}
+    - target: {fileID: 132604675, guid: bd1a546d94652954fb0df20971b3e3a1, type: 3}
+      propertyPath: laserController
+      value: 
+      objectReference: {fileID: 684565388}
     - target: {fileID: 2556670287157045541, guid: bd1a546d94652954fb0df20971b3e3a1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -446,3 +480,64 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd1a546d94652954fb0df20971b3e3a1, type: 3}
+--- !u!1001 &7787427403787810230
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7787427404446144058, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 132604674}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.029991608
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.19350238
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -186.53786
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144059, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7787427404446144061, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
+      propertyPath: m_Name
+      value: LaserController
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 547540f07989d254ca5ce3563f13e894, type: 3}

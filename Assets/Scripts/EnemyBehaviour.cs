@@ -31,11 +31,7 @@ public class EnemyBehaviour : MonoBehaviour
                 player.ReceiveDamage();
             }
         }
-        if (other.tag == "Projectile")
-        {
-            Destroy(gameObject);
-            Destroy(other.gameObject);
-        }
+        
     }
 
     void CalculatePath()
