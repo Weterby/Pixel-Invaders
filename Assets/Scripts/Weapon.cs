@@ -30,14 +30,13 @@ public class Weapon : MonoBehaviour
     private void Start()
     {
         LaserPrefab = defaultWeapon;
-        Debug.Log("A"+LaserVelocity);
-        Debug.Log("B" + laserVelocity);
     }
 
     public void ChangeWeapon(int id)
     {
         GameObject temp = laserController.FindWeapon(id);
-        if (temp != null) laserPrefab = temp;
+        Debug.Log(temp);
+        if (temp != null) LaserPrefab = temp;
         else Debug.LogError("COULDNT FIND WEAPON WITH GIVEN ID: " + id);
     }
 

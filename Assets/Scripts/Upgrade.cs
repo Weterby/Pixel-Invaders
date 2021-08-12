@@ -10,7 +10,9 @@ public class Upgrade : MonoBehaviour
     public string UpgradeName { get; }
 
     [SerializeField]
-    private int _itemID;
-    public int ItemID { get; }
+    protected int itemID;
+    public int ItemID {
+        get { return itemID; }
+    }
 
 }

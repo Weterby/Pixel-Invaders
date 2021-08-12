@@ -18,7 +18,7 @@ public class LaserController : MonoBehaviour
     private void Start()
     {
         _keys = new List<int>();
-        for(int i=0; i < _values.Count-1;i++)
+        for(int i=0; i < _values.Count;i++)
         {
             _keys.Add(i);
         }
@@ -30,7 +30,9 @@ public class LaserController : MonoBehaviour
     public GameObject FindWeapon(int itemID)
     {
         if (_weaponPrefabs.ContainsKey(itemID))
+        {
             return _weaponPrefabs[itemID];
+        }
         else return null;
     }
 }

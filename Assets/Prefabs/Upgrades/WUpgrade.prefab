@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7352089748059836022}
   - component: {fileID: 4484149508837892224}
+  - component: {fileID: 2991325007830451855}
   - component: {fileID: 4227790237199880079}
   - component: {fileID: 945471945005811632}
   m_Layer: 0
@@ -84,6 +85,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &2991325007830451855
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36164593632411918}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &4227790237199880079
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,6 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _upgradeName: SpeedShot
-  _itemID: 1
+  itemID: 1
   _damage: 1
   _velocity: 7
