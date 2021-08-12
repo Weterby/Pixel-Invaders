@@ -46,4 +46,4 @@ MonoBehaviour:
   _values:
   - {fileID: 2129845740010998662, guid: 72beea912f5ef4b4b974ad942bdf0e7f, type: 3}
   - {fileID: 1891431954584277610, guid: 78807db37cc389f49b9f8550a0388bb5, type: 3}
-  player: {fileID: 0}
+  player: {fileID: -614506444586348126, guid: bd1a546d94652954fb0df20971b3e3a1, type: 3}

@@ -172,12 +172,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultWeapon: {fileID: 2129845740010998662, guid: 72beea912f5ef4b4b974ad942bdf0e7f, type: 3}
+  weaponRank: 0
   firePoints:
   - {fileID: 3867508715162454149}
   - {fileID: 3854190327298132964}
   - {fileID: 674622637642777170}
   laserController: {fileID: 7787427404446144058, guid: 547540f07989d254ca5ce3563f13e894, type: 3}
-  _laserDamage: 1
+  laserDamage: 2
   laserVelocity: 5
 --- !u!1 &3854190327298132964
 GameObject:

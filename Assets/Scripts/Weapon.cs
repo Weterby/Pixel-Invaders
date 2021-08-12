@@ -20,8 +20,12 @@ public class Weapon : MonoBehaviour
     private LaserController laserController;
 
     [SerializeField]
-    private float _laserDamage;
-    public float LaserDamage { get; set; }
+    private float laserDamage;
+    public float LaserDamage
+    {
+        get { return laserDamage; }
+        set { laserDamage = value; }
+    }
 
     [SerializeField]
     private float laserVelocity;
@@ -37,8 +41,12 @@ public class Weapon : MonoBehaviour
         weaponRank = 1;
     }
 
-    public void ChangeWeapon(int id)
+    public void ChangeWeapon(int id, float damage, float velocity)
     {
+        Debug.Log("D"+LaserDamage);
+        Debug.Log("V"+LaserVelocity);
+        LaserDamage = damage;
+        LaserVelocity = velocity;
         GameObject temp = laserController.FindWeapon(id);
         if (temp != null) LaserPrefab = temp;
         else Debug.LogError("COULDNT FIND WEAPON WITH GIVEN ID: " + id);

@@ -93,8 +93,8 @@ public class Player : MonoBehaviour
                     Debug.LogWarning("Can't recognize the upgrade object");
                     break;
                 case "WUpgrade":
-                    int itemID = collision.gameObject.GetComponent<WeaponUpgrade>().ItemID;
-                    weapon.ChangeWeapon(itemID);
+                    WeaponUpgrade wu = collision.gameObject.GetComponent<WeaponUpgrade>();
+                    weapon.ChangeWeapon(wu.ItemID, wu.Damage, wu.Velocity);
                     break;
                 case "LUpgrade":
                     weapon.UpgradeWeapon();

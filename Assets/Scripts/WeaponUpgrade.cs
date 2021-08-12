@@ -5,9 +5,15 @@ using UnityEngine;
 public class WeaponUpgrade : Upgrade
 {
     [SerializeField]
-    private float _damage;
-    public float Damage { get; }
+    private float damage;
+    public float Damage
+    { 
+        get { return damage; }
+    }
     [SerializeField]
-    private float _velocity;
-    public float Velocity { get; }
+    private float velocity;
+    public float Velocity
+    {
+        get { return velocity; }
+    }
 }
