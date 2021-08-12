@@ -87,10 +87,19 @@ public class Player : MonoBehaviour
         //on collision with weapon box - upgrade weapon
         if (collision.gameObject.tag == "Upgrade")
         {
-            Debug.Log("kolizja");
-            int itemID = collision.gameObject.GetComponent<WeaponUpgrade>().ItemID;
-            Debug.Log("ID ulepszenia: "+ itemID);
-            weapon.ChangeWeapon(itemID);
+            switch (collision.gameObject.name)
+            {
+                default:
+                    Debug.LogWarning("Can't recognize the upgrade object");
+                    break;
+                case "WUpgrade":
+                    int itemID = collision.gameObject.GetComponent<WeaponUpgrade>().ItemID;
+                    weapon.ChangeWeapon(itemID);
+                    break;
+                case "LUpgrade":
+                    weapon.UpgradeWeapon();
+                    break;
+            }
             Destroy(collision.gameObject);
         }
     }

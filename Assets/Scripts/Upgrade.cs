@@ -6,8 +6,8 @@ using UnityEngine;
 public class Upgrade : MonoBehaviour
 {
     [SerializeField]
-    private string _upgradeName;
-    public string UpgradeName { get; }
+    protected string _upgradeName;
+    public string UpgradeName { get; set; }
 
     [SerializeField]
     protected int itemID;
