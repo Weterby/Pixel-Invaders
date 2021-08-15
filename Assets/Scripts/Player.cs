@@ -9,9 +9,10 @@ public class Player : MonoBehaviour
     [SerializeField]
     private int _speed = 5;
     [SerializeField]
-    private float _fireRate = 1f;
+    private float _fireRate = 5f;
     private float _nextFire = 0.0f;
 
+    private Vector2 direction;
     private Weapon weapon;
     private SpawnManager _spawnManager;
     void Start()
@@ -33,6 +34,9 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        direction.x = Input.GetAxis("Horizontal");
+        direction.y = Input.GetAxis("Vertical");
+
         if (Input.GetKeyDown(KeyCode.Space) && Time.time > _nextFire)
         {
             SpawnLaser();
@@ -44,26 +48,21 @@ public class Player : MonoBehaviour
     }
     void CalculateMovement()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
+        transform.Translate(new Vector3(direction.x, direction.y, 0) * _speed * Time.fixedDeltaTime);
 
-        // transform.Translate(Vector3.right * horizontalInput * _speed * Time.deltaTime);
-        // transform.Translate(Vector3.up * verticalInput * _speed * Time.deltaTime);
-        transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * _speed * Time.fixedDeltaTime);
+        //if (transform.position.y >= 0)
+        //{
+        //    transform.position = new Vector3(transform.position.x, 0, 0);
+        //}
+        //else if (transform.position.y <= -3.8f)
+        //{
+        //    transform.position = new Vector3(transform.position.x, -3.8f, 0);
+        //}
 
-        if (transform.position.y >= 0)
-        {
-            transform.position = new Vector3(transform.position.x, 0, 0);
-        }
-        else if (transform.position.y <= -3.8f)
-        {
-            transform.position = new Vector3(transform.position.x, -3.8f, 0);
-        }
-
-        if (transform.position.x >= 11 || transform.position.x <= -11)
-        {
-            transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
-        }
+        //if (transform.position.x >= 11 || transform.position.x <= -11)
+        //{
+        //    transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
+        //}
     }
 
     void SpawnLaser()

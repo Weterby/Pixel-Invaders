@@ -30,9 +30,8 @@ public class LaserBehaviour : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            //deal damage
+            collision.gameObject.GetComponent<EnemyBehaviour>().ReceiveDamage(weapon.LaserDamage);
             Destroy(gameObject);
-            Destroy(collision.gameObject);
         }
     }
 }

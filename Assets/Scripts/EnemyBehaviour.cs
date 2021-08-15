@@ -5,15 +5,14 @@ using UnityEngine;
 public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField]
+    private float _health;
+
+    [SerializeField]
     private float _speed = 4f;
     private float _bottomBound = -6f;
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         CalculatePath();
     }
@@ -36,10 +35,19 @@ public class EnemyBehaviour : MonoBehaviour
 
     void CalculatePath()
     {
-        transform.Translate(Vector2.down * _speed * Time.deltaTime);
+        transform.Translate(Vector2.down * _speed * Time.fixedDeltaTime);
         if (transform.position.y <= _bottomBound)
         {
             transform.position = new Vector2(Random.Range(-10f, 10f), 8f);
+        }
+    }
+
+    public void ReceiveDamage(float damage)
+    {
+        _health -= damage;
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
