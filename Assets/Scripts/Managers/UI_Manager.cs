@@ -20,15 +20,14 @@ public class UI_Manager : MonoBehaviour
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
-
-        health.fillAmount = player.Health / player.MaxHealth;
-
+        health.fillAmount = player.HealthPoints / player.MaxHealth;
+        shield.fillAmount = player.ShieldPoints / player.MaxShield;
         _scoreText.text = "Score: 0";
     }
-
     private void Update()
     {
-        Debug.Log(health.fillAmount);
+        //Debug.Log(player.ShieldPoints);
+        //Debug.Log(player.MaxShield);
     }
     public void AddScore(int score)
     {
@@ -37,11 +36,12 @@ public class UI_Manager : MonoBehaviour
     }
     public void CalculateHealth()
     {
-        health.fillAmount = player.Health / player.MaxHealth;
+        health.fillAmount = player.HealthPoints / player.MaxHealth;
     }
 
     public void CalculateShield()
     {
-        health.fillAmount = player.Health / player.MaxHealth;
+        Debug.Log(player.ShieldPoints / player.MaxShield);
+        shield.fillAmount = player.ShieldPoints / player.MaxShield;
     }
 }

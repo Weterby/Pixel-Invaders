@@ -5,11 +5,27 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private float _health = 3;
-    public float Health 
+    private float _healthPoints = 3;
+    [SerializeField]
+    private float _shieldPoints = 0;
+    public float ShieldPoints
     {
-        get { return _health; }
-        private set { _health = value; }
+        get { return _shieldPoints; }
+        private set { _shieldPoints = value; }
+    }
+    [SerializeField]
+    private float _maxShield = 2;
+    public float MaxShield
+    {
+        get { return _maxShield; }
+        private set { _maxShield = value; }
+    }
+    [SerializeField]
+    private GameObject shield;
+    public float HealthPoints 
+    {
+        get { return _healthPoints; }
+        private set { _healthPoints = value; }
     }
     [SerializeField]
     private float _maxHealth = 3;
@@ -31,7 +47,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
-
+        shield.SetActive(false);
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
         {
@@ -93,13 +109,29 @@ public class Player : MonoBehaviour
 
     public void ReceiveDamage() 
     {
-        _health -= 1;
-        ui.CalculateHealth();
-        if (_health <= 0)
+        if (ShieldPoints <= 0)
         {
-            _spawnManager.OnPlayerDeath();
-            Destroy(gameObject);
+            _healthPoints -= 1;
+            ui.CalculateHealth();
+            if (_healthPoints <= 0)
+            {
+                _spawnManager.OnPlayerDeath();
+                Destroy(gameObject);
+            }
         }
+        else
+        {
+            ShieldPoints -= 1;
+            if(ShieldPoints<=0) shield.SetActive(false);
+            ui.CalculateShield();
+        }
+    }
+
+    public void RegenerateShield()
+    {
+        shield.SetActive(true);
+        ShieldPoints = MaxShield;
+        ui.CalculateShield();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -118,6 +150,9 @@ public class Player : MonoBehaviour
                     break;
                 case "LUpgrade":
                     weapon.UpgradeWeapon();
+                    break;
+                case "SUpgrade":
+                    RegenerateShield();
                     break;
             }
             Destroy(collision.gameObject);
