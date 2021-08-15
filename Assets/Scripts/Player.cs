@@ -5,8 +5,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    private int _health = 3;
+    private float _health = 3;
+    public float Health 
+    {
+        get { return _health; }
+        private set { _health = value; }
+    }
     [SerializeField]
+    private float _maxHealth = 3;
+    public float MaxHealth
+    {
+        get { return _maxHealth; }
+        private set { _maxHealth = value; }
+    }
+[SerializeField]
     private int _speed = 5;
     [SerializeField]
     private float _fireRate = 5f;
@@ -15,13 +27,21 @@ public class Player : MonoBehaviour
     private Vector2 direction;
     private Weapon weapon;
     private SpawnManager _spawnManager;
+    private UI_Manager ui;
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
+
         _spawnManager = GameObject.Find("SpawnManager").GetComponent<SpawnManager>();
         if (_spawnManager == null)
         {
             Debug.LogError("SPAWN MANAGER IS MISSING");
+        }
+
+        ui = GameObject.Find("Canvas").GetComponent<UI_Manager>();
+        if (ui == null)
+        {
+            Debug.LogError("COULDN'T FIND UI MANAGER COMPONENT");
         }
 
         weapon = gameObject.GetComponent<Weapon>();
@@ -74,6 +94,7 @@ public class Player : MonoBehaviour
     public void ReceiveDamage() 
     {
         _health -= 1;
+        ui.CalculateHealth();
         if (_health <= 0)
         {
             _spawnManager.OnPlayerDeath();
