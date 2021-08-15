@@ -9,8 +9,11 @@ public class UI_Manager : MonoBehaviour
     private int _score;
 
     private Player player;
+
     [SerializeField]
     private Image health;
+    [SerializeField]
+    private Image shield;
     [SerializeField]
     private Text _scoreText;
 
@@ -33,6 +36,11 @@ public class UI_Manager : MonoBehaviour
         _scoreText.text = "Score: " + _score;
     }
     public void CalculateHealth()
+    {
+        health.fillAmount = player.Health / player.MaxHealth;
+    }
+
+    public void CalculateShield()
     {
         health.fillAmount = player.Health / player.MaxHealth;
     }
