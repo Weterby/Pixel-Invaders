@@ -6,12 +6,22 @@ public class EnemyBehaviour : MonoBehaviour
 {
     [SerializeField]
     private float _health;
-
+    [SerializeField]
+    private int pointsWorth=5;
     [SerializeField]
     private float _speed = 4f;
     private float _bottomBound = -6f;
 
-    // Update is called once per frame
+    private UI_Manager ui_manager;
+
+    private void Start()
+    {
+        ui_manager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
+        if (ui_manager == null)
+        {
+            Debug.LogError("COULDN'T FIND UI MANAGER COMPONENT");
+        }
+    }
     void FixedUpdate()
     {
         CalculatePath();
@@ -47,6 +57,7 @@ public class EnemyBehaviour : MonoBehaviour
         _health -= damage;
         if (_health <= 0)
         {
+            ui_manager.AddScore(pointsWorth);
             Destroy(gameObject);
         }
     }
