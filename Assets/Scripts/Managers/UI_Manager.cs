@@ -41,7 +41,6 @@ public class UI_Manager : MonoBehaviour
 
     public void CalculateShield()
     {
-        Debug.Log(player.ShieldPoints / player.MaxShield);
         shield.fillAmount = player.ShieldPoints / player.MaxShield;
     }
 }

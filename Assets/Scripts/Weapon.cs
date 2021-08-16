@@ -43,8 +43,6 @@ public class Weapon : MonoBehaviour
 
     public void ChangeWeapon(int id, float damage, float velocity)
     {
-        Debug.Log("D"+LaserDamage);
-        Debug.Log("V"+LaserVelocity);
         LaserDamage = damage;
         LaserVelocity = velocity;
         GameObject temp = laserController.FindWeapon(id);

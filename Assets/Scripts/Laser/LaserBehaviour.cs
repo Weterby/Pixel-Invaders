@@ -18,7 +18,6 @@ public class LaserBehaviour : MonoBehaviour
 
     void CalculatePath()
     {
-        Debug.Log(weapon.LaserVelocity);
         transform.Translate(new Vector2(0, weapon.LaserVelocity * Time.fixedDeltaTime));
         if (transform.position.y >= _upperBound)
         {
