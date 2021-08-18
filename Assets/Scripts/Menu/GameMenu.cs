@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class GameMenu : MonoBehaviour
 {
     private bool isScenePaused = false;
     [SerializeField]
@@ -16,14 +16,9 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("GameScene");
     }
 
-    // Update is called once per frame
-     public void QuitButton()
-    {
-        Application.Quit();
-    }
-
     public void BackToMainMenu()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
     }
 
