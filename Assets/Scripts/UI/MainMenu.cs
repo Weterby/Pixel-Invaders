@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     private bool isScenePaused = false;
     [SerializeField]
-    private GameObject menu;
+    private GameObject mainPage;
     [SerializeField]
     private GameObject options;
 
@@ -37,7 +37,7 @@ public class MainMenu : MonoBehaviour
     {
         isScenePaused = true;
         Time.timeScale = 0f;
-        menu.SetActive(true);
+        mainPage.SetActive(true);
     }
 
     private void Update()
