@@ -5,7 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    
+    private bool isScenePaused = false;
+    [SerializeField]
+    private GameObject menu;
+    [SerializeField]
+    private GameObject options;
+
     public void PlayButton()
     {
         SceneManager.LoadScene("GameScene");
@@ -15,5 +20,40 @@ public class MainMenu : MonoBehaviour
      public void QuitButton()
     {
         Application.Quit();
+    }
+
+    public void BackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        isScenePaused = false;
+    }
+
+    public void PauseGame()
+    {
+        isScenePaused = true;
+        Time.timeScale = 0f;
+        menu.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape) && CanPause())
+        {
+            PauseGame();
+        }
+    }
+
+    private bool CanPause()
+    {
+        if(SceneManager.GetActiveScene().name == "GameScene" && !isScenePaused)
+        {
+            return true;
+        }
+        return false;
     }
 }
