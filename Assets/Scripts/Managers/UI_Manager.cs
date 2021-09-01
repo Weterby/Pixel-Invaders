@@ -16,7 +16,8 @@ public class UI_Manager : MonoBehaviour
     private Image shield;
     [SerializeField]
     private Text _scoreText;
-
+    [SerializeField]
+    private GameObject deathScreen;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
@@ -42,5 +43,17 @@ public class UI_Manager : MonoBehaviour
     public void CalculateShield()
     {
         shield.fillAmount = player.ShieldPoints / player.MaxShield;
+    }
+
+    public void OnPlayerDeath()
+    {
+        StartCoroutine(DeathScreenDelay());
+    }
+
+    private IEnumerator DeathScreenDelay()
+    {
+        yield return new WaitForSeconds(2);
+        GameObject.Find("GameUI").SetActive(false);
+        deathScreen.SetActive(true);
     }
 }

@@ -102,6 +102,7 @@ public class Player : MonoBehaviour
             if (_healthPoints <= 0)
             {
                 _spawnManager.OnPlayerDeath();
+                ui.OnPlayerDeath();
                 Destroy(gameObject);
             }
         }
