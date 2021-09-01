@@ -13,7 +13,8 @@ public class EnemyBehaviour : MonoBehaviour
     private float _bottomBound = -6f;
 
     private UI_Manager ui_manager;
-
+    [SerializeField]
+    private Animator anim;
     private GameController gameController;
     private void Start()
     {
@@ -72,7 +73,8 @@ public class EnemyBehaviour : MonoBehaviour
     {
         ui_manager.AddScore(pointsWorth);
         DropItems();
-        Destroy(gameObject);
+        anim.SetTrigger("EnemyDestroy");
+        Destroy(gameObject,.25f);
     }
 
     private void DropItems()
