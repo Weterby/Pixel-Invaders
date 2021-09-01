@@ -14,9 +14,9 @@ public class GameController : MonoBehaviour
 
         DropTable.lootList = new List<LootDrop>
         {
-            new LootDrop(upgradeList[0], 8), //shield
-            new LootDrop(upgradeList[1], 6), //weapon
-            new LootDrop(upgradeList[2], 4), //laser
+            new LootDrop(upgradeList[0], 4), //shield
+            new LootDrop(upgradeList[1], 3), //weapon
+            new LootDrop(upgradeList[2], 2), //laser
         };
     }
 
