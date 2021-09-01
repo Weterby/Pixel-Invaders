@@ -16,6 +16,7 @@ public class EnemyBehaviour : MonoBehaviour
     [SerializeField]
     private Animator anim;
     private GameController gameController;
+    private bool isEnemyHit = false;
     private void Start()
     {
         ui_manager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
@@ -62,18 +63,21 @@ public class EnemyBehaviour : MonoBehaviour
 
     public void ReceiveDamage(float damage)
     {
-        _health -= damage;
-        if (_health <= 0)
-        {
-            EnemyDeath();
-        }
+            _health -= damage;
+            if (_health <= 0)
+            {
+                EnemyDeath();
+            }
     }
-
     private void EnemyDeath()
     {
-        ui_manager.AddScore(pointsWorth);
-        DropItems();
-        anim.SetTrigger("EnemyDestroy");
+        if (!isEnemyHit)
+        {
+            isEnemyHit = true;
+            ui_manager.AddScore(pointsWorth);
+            DropItems();
+            anim.SetTrigger("EnemyDestroy");
+        }
         Destroy(gameObject,.25f);
     }
 

@@ -44,6 +44,8 @@ public class Player : MonoBehaviour
     private Weapon weapon;
     private SpawnManager _spawnManager;
     private UI_Manager ui;
+    [SerializeField]
+    private Animator animator;
     void Start()
     {
         transform.position = new Vector3(0, 0, 0);
@@ -115,9 +117,10 @@ public class Player : MonoBehaviour
             ui.CalculateHealth();
             if (_healthPoints <= 0)
             {
+                animator.SetTrigger("PlayerExplosion");
                 _spawnManager.OnPlayerDeath();
                 ui.OnPlayerDeath();
-                Destroy(gameObject);
+                Destroy(gameObject,0.25f);
             }
         }
         else

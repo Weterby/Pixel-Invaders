@@ -3119,7 +3119,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyPrefab: {fileID: 3863840460534262273, guid: c198795ba43465e49929d3d67c5f119e, type: 3}
   _enemyContainer: {fileID: 997190788}
-  enemySpawnSpeed: 5
+  enemySpawnSpeed: 2
 --- !u!1 &1872919463
 GameObject:
   m_ObjectHideFlags: 0

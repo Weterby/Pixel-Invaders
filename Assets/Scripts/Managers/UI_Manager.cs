@@ -52,8 +52,8 @@ public class UI_Manager : MonoBehaviour
 
     private IEnumerator DeathScreenDelay()
     {
+        yield return new WaitForSeconds(1f);
         GameObject.Find("GameUI").SetActive(false);
         deathScreen.SetActive(true);
-        yield return new WaitForSeconds(2);
     }
 }
