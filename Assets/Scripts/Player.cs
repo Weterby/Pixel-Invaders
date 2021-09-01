@@ -44,6 +44,7 @@ public class Player : MonoBehaviour
     private Weapon weapon;
     private SpawnManager _spawnManager;
     private UI_Manager ui;
+    private bool isPlayerDead = false;
     [SerializeField]
     private Animator animator;
     void Start()
@@ -117,10 +118,7 @@ public class Player : MonoBehaviour
             ui.CalculateHealth();
             if (_healthPoints <= 0)
             {
-                animator.SetTrigger("PlayerExplosion");
-                _spawnManager.OnPlayerDeath();
-                ui.OnPlayerDeath();
-                Destroy(gameObject,0.25f);
+                PlayerDeath();
             }
         }
         else
@@ -131,6 +129,18 @@ public class Player : MonoBehaviour
         }
     }
 
+
+    private void PlayerDeath()
+    {
+        if (!isPlayerDead)
+        {
+            isPlayerDead = true;
+            animator.SetTrigger("PlayerExplosion");
+            _spawnManager.OnPlayerDeath();
+            ui.OnPlayerDeath();
+        }
+        Destroy(gameObject, 0.25f);
+    }
     public void RegenerateShield()
     {
         shield.SetActive(true);

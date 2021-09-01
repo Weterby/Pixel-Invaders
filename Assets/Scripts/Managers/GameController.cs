@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
     public GameObject DropItem()
     {
         int randomNumber = Random.Range(0, 101);
-        Debug.Log(randomNumber);
+        //Debug.Log(randomNumber);
         int weightSum = 0;
         foreach(LootDrop item in DropTable.lootList)
         {

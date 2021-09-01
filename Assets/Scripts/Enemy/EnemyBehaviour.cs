@@ -14,7 +14,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     private UI_Manager ui_manager;
     [SerializeField]
-    private Animator anim;
+    public Animator anim;
     private GameController gameController;
     private bool isEnemyHit = false;
     private void Start()
