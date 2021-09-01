@@ -14,12 +14,19 @@ public class EnemyBehaviour : MonoBehaviour
 
     private UI_Manager ui_manager;
 
+    private GameController gameController;
     private void Start()
     {
         ui_manager = GameObject.Find("Canvas").GetComponent<UI_Manager>();
         if (ui_manager == null)
         {
             Debug.LogError("COULDN'T FIND UI MANAGER COMPONENT");
+        }
+
+        gameController = GameObject.Find("GameController").GetComponent<GameController>();
+        if (gameController == null)
+        {
+            Debug.LogError("COULDN'T FIND GAME CONTROLLER COMPONENT");
         }
     }
     void FixedUpdate()
@@ -57,8 +64,23 @@ public class EnemyBehaviour : MonoBehaviour
         _health -= damage;
         if (_health <= 0)
         {
-            ui_manager.AddScore(pointsWorth);
-            Destroy(gameObject);
+            EnemyDeath();
+        }
+    }
+
+    private void EnemyDeath()
+    {
+        ui_manager.AddScore(pointsWorth);
+        DropItems();
+        Destroy(gameObject);
+    }
+
+    private void DropItems()
+    {
+        GameObject drop = gameController.DropItem();
+        if (drop != null)
+        {
+            Instantiate(drop, transform.position, Quaternion.identity);
         }
     }
 }
