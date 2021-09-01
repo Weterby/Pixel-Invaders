@@ -34,7 +34,7 @@ public class Player : MonoBehaviour
         get { return _maxHealth; }
         private set { _maxHealth = value; }
     }
-[SerializeField]
+    [SerializeField]
     private int _speed = 5;
     [SerializeField]
     private float _fireRate = 5f;
@@ -85,6 +85,20 @@ public class Player : MonoBehaviour
     void CalculateMovement()
     {
         transform.Translate(new Vector3(direction.x, direction.y, 0) * _speed * Time.fixedDeltaTime);
+
+        if (transform.position.y >= 7)
+        {
+            transform.position = new Vector3(transform.position.x, 7, 0);
+        }
+        else if (transform.position.y <= -7f)
+        {
+            transform.position = new Vector3(transform.position.x, -7f, 0);
+        }
+
+        if (transform.position.x >= 13.5f || transform.position.x <= -13.5f)
+        {
+            transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
+        }
     }
 
     void SpawnLaser()
