@@ -85,20 +85,6 @@ public class Player : MonoBehaviour
     void CalculateMovement()
     {
         transform.Translate(new Vector3(direction.x, direction.y, 0) * _speed * Time.fixedDeltaTime);
-
-        //if (transform.position.y >= 0)
-        //{
-        //    transform.position = new Vector3(transform.position.x, 0, 0);
-        //}
-        //else if (transform.position.y <= -3.8f)
-        //{
-        //    transform.position = new Vector3(transform.position.x, -3.8f, 0);
-        //}
-
-        //if (transform.position.x >= 11 || transform.position.x <= -11)
-        //{
-        //    transform.position = new Vector3(-transform.position.x, transform.position.y, 0);
-        //}
     }
 
     void SpawnLaser()

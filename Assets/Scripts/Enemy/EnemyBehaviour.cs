@@ -79,8 +79,9 @@ public class EnemyBehaviour : MonoBehaviour
     {
         GameObject drop = gameController.DropItem();
         if (drop != null)
-        {
-            Instantiate(drop, transform.position, Quaternion.identity);
+        {            
+            GameObject newDrop = Instantiate(drop, transform.position, Quaternion.identity);
+            newDrop.name = drop.name;
         }
     }
 }
